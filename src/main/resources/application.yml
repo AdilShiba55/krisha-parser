@@ -1,0 +1,30 @@
+app:
+  krisha:
+    user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36
+    referrer: http://www.google.com
+    app-id: {{APP_ID}}
+    app-key: {{APP_KEY}}
+  proxy:
+    url: {{PROXY_URL}}
+    enabled: true
+  scheduling:
+    enabled:
+      ids-asc: false
+      ids-desc: false
+      items-desc: true
+      phones-desc: false
+    cron:
+      # каждый день в 22 часа
+      parse-ids-desc: 0 * * * * * # 0 22 * * * *
+      # каждые две минуты
+      parse-ids-asc: 0 * * * * * # 0 */2 * * * *
+      # каждую минуту
+      parse-items-desc: 0 * * * * *
+      # каждую минуту
+      parse-phones-desc: 0 * * * * *
+
+spring:
+  data:
+    mongodb:
+      database: krisha-loader
+      uri: mongodb://localhost:27017/krisha-loader?replicaSet=rs0
